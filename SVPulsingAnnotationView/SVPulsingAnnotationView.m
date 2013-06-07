@@ -32,6 +32,7 @@
         self.layer.anchorPoint = CGPointMake(0.5, 0.5);
         self.calloutOffset = CGPointMake(0, 4);
         self.bounds = CGRectMake(0, 0, 23, 23);
+		self.showDot = YES;
         self.dotAnnotationSize = CGSizeMake(16, 16);
         self.pulseAnimationDuration = 1;
         self.delayBetweenPulseCycles = 1;
@@ -47,8 +48,10 @@
     [_dotLayer removeFromSuperlayer];
     _dotLayer = nil;
     
-    [self.layer addSublayer:self.haloLayer];
-    [self.layer addSublayer:self.dotLayer];
+	[self.layer insertSublayer:self.haloLayer atIndex:0];
+	if (self.showDot) {
+		[self.layer addSublayer:self.dotLayer];
+	}
 }
 
 - (void)willMoveToSuperview:(UIView *)newSuperview {
@@ -59,6 +62,8 @@
 }
 
 - (void)popIn {
+	if (! self.showDot)
+		return;
     CAKeyframeAnimation *bounceAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
     CAMediaTimingFunction *easeInOut = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     
