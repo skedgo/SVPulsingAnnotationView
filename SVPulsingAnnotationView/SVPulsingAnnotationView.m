@@ -112,6 +112,14 @@
     [(self.shouldBeFlat ? self.layer : self.shinyDotLayer) addAnimation:bounceAnimation forKey:@"popIn"];
 }
 
+- (CALayer *)colorHaloLayer {
+    if (self.shouldBeFlat) {
+        return self.colorHaloLayer;
+    } else {
+        return self.glowingHaloLayer;
+    }
+}
+
 #pragma mark - Setters
 
 - (void)setAnnotationColor:(UIColor *)annotationColor {
