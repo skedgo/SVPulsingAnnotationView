@@ -2,17 +2,15 @@
 
 SVPulsingAnnotationView is a customizable Core Graphics replica of Apple's `MKUserLocationView`. 
 
-![SVPulsingAnnotationView](http://cl.ly/NI4r/SVPulsingAnnotationView.gif)
+![SVPulsingAnnotationView](http://cl.ly/Sdtk/download/SVPulsingAnnotationView.gif)
 
 ## Installation
 
-### From CocoaPods
+### CocoaPods
 
-Add `pod 'SVPulsingAnnotationView'` to your Podfile or `pod 'SVPulsingAnnotationView', :head` if you're feeling adventurous.
+I'm not a big fan of CocoaPods, so tend to not keep it updated. If you really want to use SVPulsingAnnotationView with CocoaPods, I suggest you use `pod 'SVPulsingAnnotationView', :head` to pull from the `master` branch directly. I'm usually careful about what I push there and is the version I use myself in all my projects.
 
 ### Manually
-
-_**Important note if your project doesn't use ARC**: you must add the `-fobjc-arc` compiler flag to `SVPulsingAnnotationView.m` in Target Settings > Build Phases > Compile Sources._
 
 * Drag the `SVPulsingAnnotationView/SVPulsingAnnotationView` folder into your project. 
 * Add the **QuartzCore** and **MapKit** frameworks to your project.
@@ -47,9 +45,12 @@ You use SVPulsingAnnotationView just like any other MKAnnotationView:
 SVPulsingAnnotationView can be customized with the following properties:
 
 ```objective-c
-@property (nonatomic, strong) UIColor *annotationColor;
-@property (nonatomic, readwrite) NSTimeInterval pulseAnimationDuration;
-@property (nonatomic, readwrite) NSTimeInterval delayBetweenPulseCycles;
+@property (nonatomic, strong) UIColor *annotationColor; // default is same as MKUserLocationView
+@property (nonatomic, strong) UIColor *pulseColor; // default is same as annotationColor
+
+@property (nonatomic, readwrite) NSTimeInterval pulseAnimationDuration; // default is 1s
+@property (nonatomic, readwrite) NSTimeInterval outerPulseAnimationDuration; // default is 3s
+@property (nonatomic, readwrite) NSTimeInterval delayBetweenPulseCycles; // default is 1s
 ```
 
 ## Under the Hood
