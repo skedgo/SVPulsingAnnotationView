@@ -112,7 +112,7 @@
     [(self.shouldBeFlat ? self.layer : self.shinyDotLayer) addAnimation:bounceAnimation forKey:@"popIn"];
 }
 
-- (CALayer *)colorHaloLayer {
+- (CALayer *)haloLayer {
     if (self.shouldBeFlat) {
         return self.colorHaloLayer;
     } else {
